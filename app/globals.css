@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #f5efe4;
+  --cream-light: #fbf8f1;
+  --paper: #fffdf8;
+  --graphite: #282724;
+  --muted: #777168;
+  --terracotta: #b9573d;
+  --terracotta-dark: #963f2c;
+  --terracotta-soft: #f0d8ce;
+  --olive: #68705a;
+  --line: rgba(40, 39, 36, 0.12);
+  --shadow: 0 18px 60px rgba(72, 51, 38, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--cream);
+}
+
+body {
+  margin: 0;
+  color: var(--graphite);
+  background:
+    radial-gradient(circle at 8% 0%, rgba(185, 87, 61, 0.08), transparent 28rem),
+    var(--cream);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(185, 87, 61, 0.48);
+  outline-offset: 3px;
+}
+
+::selection {
+  color: white;
+  background: var(--terracotta);
+}
+
+.font-display {
+  font-family: Iowan Old Style, Baskerville, "Times New Roman", serif;
+  letter-spacing: -0.025em;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.glass {
+  background: rgba(255, 253, 248, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+.animate-rise {
+  animation: rise 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 1.8s ease-in-out infinite;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(185, 87, 61, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(185, 87, 61, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  #qr-print-card,
+  #qr-print-card * {
+    visibility: visible !important;
+  }
+
+  #qr-print-card {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    height: fit-content;
+    box-shadow: none !important;
+  }
+}
